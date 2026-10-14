@@ -202,7 +202,8 @@ it("exits 7 with a JSON verdict when gh is not on PATH", () => {
 });
 
 it("cancels an in-flight command at the CLI deadline", () => {
-  const result = run("slow", ["--timeout", "0.25"]);
+  // Allow the fixture to start, then cancel before its two-second command finishes.
+  const result = run("slow", ["--timeout", "1"]);
   expect(result.status).toBe(5);
   expect(result.elapsed).toBeLessThan(1500);
   expect(JSON.parse(result.stdout.trim())).toMatchObject({ kind: "TIMEOUT" });

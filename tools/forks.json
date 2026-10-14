@@ -98,7 +98,7 @@
     },
     "plugins/pstack/skills/poteto-mode/playbooks/session-pickup.md": {
       "kind": "policy",
-      "why": "Reads the project checkpoint first and applies the human-rulings epistemics when reconstructing state.",
+      "why": "Reads the project checkpoint first and applies the human-rulings epistemics when reconstructing state. Transcript fallback is runtime-qualified and scoped to authorized Codex task/workspace evidence.",
       "since": "0.9.34",
       "upstream": "not-proposed"
     },
@@ -242,7 +242,7 @@
     },
     "plugins/pstack/skills/setup-pstack/SKILL.md": {
       "kind": "port-feature",
-      "why": "Writes the override sheet at each runtime's own path, loaded by @-include on Claude Code and pasted into AGENTS.md on Codex since neither has Cursor's always-applied rules, replaces Cursor's budget step with a default effort and per-role effort levels, adds the SessionStart hook toggle and names the Pi extension as a reader of it, lists every runtime's sheet path in a table, and routes GitHub Copilot to copilot.md.",
+      "why": "Writes the override sheet at each runtime's own path, loaded by @-include on Claude Code and pasted into AGENTS.md on Codex since neither has Cursor's always-applied rules, replaces Cursor's budget step with a default effort and per-role effort levels, adds the SessionStart hook toggle and names the Pi extension as a reader of it, lists every runtime's sheet path in a table, and routes GitHub Copilot to copilot.md. Codex setup validates native model/effort IDs, preserves existing routing choices, and replaces a bounded AGENTS model block idempotently.",
       "since": "0.9.2",
       "upstream": "not-proposed"
     },
@@ -280,6 +280,24 @@
       "kind": "policy",
       "why": "Adds a step that applies the human-rulings epistemics, and gives the Direct-claim example a URL the link validator resolves.",
       "since": "0.9.17",
+      "upstream": "not-proposed"
+    },
+    "plugins/pstack/skills/reflect/references/tooling-reviewer.md": {
+      "kind": "port-feature",
+      "why": "Accepts observed native Codex file reads and subagent briefs at actual installed skill paths without treating catalog visibility or planned reads as invocation evidence.",
+      "since": "0.9.85",
+      "upstream": "not-proposed"
+    },
+    "plugins/pstack/skills/reflect/references/judgment-reviewer.md": {
+      "kind": "port-feature",
+      "why": "Accepts observed native Codex file reads and subagent briefs at actual installed skill paths without treating catalog visibility or planned reads as invocation evidence.",
+      "since": "0.9.85",
+      "upstream": "not-proposed"
+    },
+    "plugins/pstack/skills/reflect/references/divergent-reviewer.md": {
+      "kind": "port-feature",
+      "why": "Accepts observed native Codex file reads and subagent briefs at actual installed skill paths without treating catalog visibility or planned reads as invocation evidence.",
+      "since": "0.9.85",
       "upstream": "not-proposed"
     }
   },

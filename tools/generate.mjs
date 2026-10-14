@@ -695,7 +695,10 @@ export function effortSection(levels, defaultEffort) {
     "`pstack:poteto-agent` becomes `subagent_type: \"pstack:poteto-agent-<level>\"`. " +
     "`general-purpose`, or no `subagent_type`, becomes `subagent_type: \"pstack:effort-<level>\"`. " +
     "The effort agents set only `effort`, so the model you pass still decides the model. " +
-    "On Codex, pass the level as `spawn_agent`'s `reasoning_effort` and keep the usual instructions."
+    "On Codex, use the exposed spawn schema and the platform mapping's dispatch policy. " +
+    "Pass a supported level as `reasoning_effort`; when the schema distinguishes history forks, " +
+    "a model or effort override requires `fork_turns: \"none\"` and a self-contained brief. " +
+    "Omit overrides for inherited model/session effort."
   );
 }
 

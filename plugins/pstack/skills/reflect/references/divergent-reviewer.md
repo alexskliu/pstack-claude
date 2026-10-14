@@ -18,7 +18,7 @@ Scan for:
 
 ## Scope to skills and tools the session actually used
 
-Route findings only to skills, tools, or MCPs this transcript used. A skill counts as used when the transcript shows a `Read` of its `SKILL.md` (under `.claude/skills/`, `~/.claude/skills/`, or `~/.claude/plugins/`), a `Agent` prompt naming its path, or a tool call (Shell, Grep, MCP, etc.) matching its documented commands. Speculative routings to skills the parent never opened do not count.
+Route findings only to skills, tools, or MCPs this transcript used. A skill counts as used when the transcript shows a successful read of its `SKILL.md` through the active runtime's file tools (including `Read` or a native `exec_command` file read), an actual subagent prompt naming its path (including `Agent` or native Codex `spawn_agent`), or a tool call (Shell, Grep, native execution, MCP, etc.) matching its documented commands. Accept the installed path shown in that evidence: Claude paths, Codex paths under `$CODEX_HOME/skills` or `$CODEX_HOME/plugins` (default `~/.codex`), shared `~/.agents/skills`, or project-local skill paths. A catalog listing, a planned read, or an unsupported claim of use is not invocation evidence. Speculative routings to skills the parent never opened do not count.
 
 Two finding shapes are valid:
 - The parent invoked the skill and you found a real gap in its body. Route to the skill's relevant section.

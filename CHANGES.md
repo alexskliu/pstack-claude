@@ -2,6 +2,14 @@
 
 This file is the release changelog, with one `## <version> - <title>` entry per release, newest first. The Cursor-to-Claude rewrite rules live in [`tools/substitutions.json`](tools/substitutions.json), and the [sync boundary](CONTRIBUTING.md#the-sync-boundary) in `CONTRIBUTING.md` defines how a change to upstream's skill content is declared.
 
+## 0.9.85 - resolve shared workflows through native Codex capabilities
+
+The Codex adapter now uses the tools exposed by the current host for questions, task tracking, delegation, messages, and lifecycle control. It preserves inherited model choices and requires fresh histories for explicit model or effort overrides where the native schema requires them. Candidate writers use write-capable roles; read-only native architect/explore roles are not interchangeable with general-purpose writers. User authorization and host policy take precedence over shared workflow defaults.
+
+Direct recall and decision-trail invocation now loads the Codex mapping. Session pickup, personal-skill authoring, and reflection use scoped Codex evidence or labeled digests instead of defaulting to Claude transcript folders. Reflection accepts observed native file reads and subagent briefs. Setup keeps native model IDs, preserves existing hook settings, and replaces its bounded AGENTS model block without duplicating it.
+
+Generator sources carry the new effort guidance and current panel roles, so regeneration preserves the fixes. Codex adapter regression fixtures validate copyable native calls, generated dispatch constraints, direct entrypoint gates, and panel guidance. The existing PR-watcher deadline test allows its child fixture to start before proving it is cancelled before completion. Claude, Pi, and Copilot instructions remain supported.
+
 ## 0.9.84 - run the Codex SessionStart hook again
 
 0.9.83 shipped a root `plugins/pstack/plugin.json` in the Agent Plugins 1.0.0 format. Codex reads that manifest before `.codex-plugin/plugin.json` and loads no plugin hooks for an Agent Plugins manifest, so on Codex the `SessionStart` hook stopped running and sessions lost the pstack routing instruction. Skills still loaded, and Claude Code was not affected. The root manifest is gone, so Codex reads `.codex-plugin/plugin.json` and its hooks again. The generator now fails when `plugins/pstack/plugin.json` exists, and the sync still excludes upstream's copy. A packaging test follows Codex's manifest lookup over the shipped plugin and checks that it finds the `SessionStart` hook, and that the 0.9.83 manifest would hide it. @Dude-Bear found the cause and confirmed it by moving the file aside, in [#265](https://github.com/michael-denyer/pstack-claude/issues/265).
